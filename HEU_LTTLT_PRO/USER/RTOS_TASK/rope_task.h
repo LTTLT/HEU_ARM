@@ -32,4 +32,5 @@ void rope_cal_process(void);
 void motor_enable_init(void);
 void computer_rev(uint8_t *buf,uint8_t length );
 void arm_param_init(arm_basic_param *ARM_PARA);
+void angle_trans(arm_theta_param *arm_data,uint8_t joint);
 #endif

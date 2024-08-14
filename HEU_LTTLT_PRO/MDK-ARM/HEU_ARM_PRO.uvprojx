@@ -2066,6 +2066,11 @@
               <FileType>1</FileType>
               <FilePath>..\USER\RTOS_TASK\rope_task.c</FilePath>
             </File>
+            <File>
+              <FileName>imu_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\RTOS_TASK\imu_task.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

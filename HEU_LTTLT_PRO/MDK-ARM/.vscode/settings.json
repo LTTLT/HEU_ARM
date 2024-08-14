@@ -5,6 +5,8 @@
         "fdcan.h": "c",
         "can_bsp.h": "c",
         "main.h": "c",
-        "dm4310_drv.h": "c"
+        "dm4310_drv.h": "c",
+        "imu_task.h": "c",
+        "vofa.h": "c"
     }
 }

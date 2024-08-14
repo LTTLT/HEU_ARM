@@ -3,6 +3,7 @@
 #include "string.h"
 #include "dm4310_drv.h"
 #include "rope_task.h"
+#include "imu_task.h"
 FDCAN_RxHeaderTypeDef RxHeader1;
 uint8_t g_Can1RxData[64];
 
@@ -163,9 +164,11 @@ void HAL_FDCAN_RxFifo1Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo1ITs)
 		HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO1, &RxHeader2, g_Can2RxData);
 			switch(RxHeader2.Identifier)
 			{
-       case 5 :dm4310_fbdata(&armmotor[4], g_Can2RxData,RxHeader2.DataLength);break;
-       case 6 :dm4310_fbdata(&armmotor[5], g_Can2RxData,RxHeader2.DataLength);break;	         	
-//				case 0 :dm6215_fbdata(&chassis_move.wheel_motor[1], g_Can2RxData,RxHeader2.DataLength);break;
+        case 5 :dm4310_data(&armmotor[4], g_Can2RxData,RxHeader2.DataLength);break;
+        case 6 :dm4310_data(&armmotor[5], g_Can2RxData,RxHeader2.DataLength);break;	         	
+          case 0x280+IMU_CAN_ID :imu_data_process(W_SPD,g_Can2RxData);break;
+          case 0x380+IMU_CAN_ID :imu_data_process(EULAR,g_Can2RxData);break;
+          case 0x480+IMU_CAN_ID:imu_data_process(Q4,g_Can2RxData);break;
 				default: break;
 			}	
     }

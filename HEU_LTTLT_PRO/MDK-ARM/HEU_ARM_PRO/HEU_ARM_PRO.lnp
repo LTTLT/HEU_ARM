@@ -60,6 +60,7 @@
 "heu_arm_pro\mahony_filter.o"
 "heu_arm_pro\pid.o"
 "heu_arm_pro\rope_task.o"
+"heu_arm_pro\imu_task.o"
 "heu_arm_pro\can_bsp.o"
 "heu_arm_pro\dm4310_drv.o"
 "heu_arm_pro\vofa.o"

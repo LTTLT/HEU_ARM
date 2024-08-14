@@ -30,6 +30,7 @@ void rope_cal_process(void)
 		 //pos_speed_ctrl(&hfdcan1,1, pos_test, vel_test);//测试
 		 //vofa_demo(); //vofa上位机使用demo
 		 //vofa_user(float data1,float data2,float data3,float data4) 
+		  angle_trans(&HEU_ARM,1);
 		 osDelay(2);//任务执行频率，1000/2=500hz
 	  }
 }
@@ -39,7 +40,7 @@ float delta_lr,delta_lp;//为了方便实时观测所以用了全局，为计算时的绳长变量
   * @param[in]      none
   * @retval         none
   */
-void angle_trans(arm_theta_param *arm_data,uint8_t joint)//
+void angle_trans(arm_theta_param *arm_data,uint8_t joint)
 {
 	float roll_angle ,pitch_angle;
 	roll_angle = *arm_data->roll_angel;
@@ -106,7 +107,8 @@ void motor_enable_init(void)
 	ARM_PARA->h = ARM__H;
 	ARM_PARA->n = ARM__N;
 	ARM_PARA->w = ARM__W;
-	ARM_PARA->i_motor_arm = PI ;//随便写的，并不对
+	ARM_PARA->i_motor_arm =1.0f ;//随便写的，并不对
+	ARM_PARA->d =1.0f ;
 	
  }
 /**
